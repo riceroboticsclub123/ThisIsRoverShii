@@ -1,0 +1,33 @@
+[0.624s] Invoking command in '/home/baracuda/Desktop/Rice Robotics/workspace/src/rover': PYTHONPATH=/home/baracuda/Desktop/Rice Robotics/workspace/build/rover/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/rover build --build-base /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build install --record /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/install.log --single-version-externally-managed install_data
+[0.865s] running egg_info
+[0.865s] creating ../../build/rover/rover.egg-info
+[0.866s] writing ../../build/rover/rover.egg-info/PKG-INFO
+[0.866s] writing dependency_links to ../../build/rover/rover.egg-info/dependency_links.txt
+[0.866s] writing entry points to ../../build/rover/rover.egg-info/entry_points.txt
+[0.866s] writing requirements to ../../build/rover/rover.egg-info/requires.txt
+[0.866s] writing top-level names to ../../build/rover/rover.egg-info/top_level.txt
+[0.866s] writing manifest file '../../build/rover/rover.egg-info/SOURCES.txt'
+[0.867s] reading manifest file '../../build/rover/rover.egg-info/SOURCES.txt'
+[0.868s] writing manifest file '../../build/rover/rover.egg-info/SOURCES.txt'
+[0.868s] running build
+[0.869s] running build_py
+[0.869s] creating /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build
+[0.869s] creating /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build/lib
+[0.869s] creating /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build/lib/rover
+[0.869s] copying rover/__init__.py -> /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build/lib/rover
+[0.869s] running install
+[0.869s] running install_lib
+[0.870s] creating /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages/rover
+[0.870s] copying /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build/lib/rover/__init__.py -> /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages/rover
+[0.870s] byte-compiling /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages/rover/__init__.py to __init__.cpython-310.pyc
+[0.870s] running install_data
+[0.870s] creating /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/share/ament_index
+[0.871s] creating /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/share/ament_index/resource_index
+[0.871s] creating /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/share/ament_index/resource_index/packages
+[0.871s] copying resource/rover -> /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/share/ament_index/resource_index/packages
+[0.871s] copying package.xml -> /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/share/rover
+[0.871s] running install_egg_info
+[0.872s] Copying ../../build/rover/rover.egg-info to /home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages/rover-0.0.0-py3.10.egg-info
+[0.873s] running install_scripts
+[0.896s] writing list of installed files to '/home/baracuda/Desktop/Rice Robotics/workspace/build/rover/install.log'
+[0.923s] Invoked command in '/home/baracuda/Desktop/Rice Robotics/workspace/src/rover' returned '0': PYTHONPATH=/home/baracuda/Desktop/Rice Robotics/workspace/build/rover/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/baracuda/Desktop/Rice Robotics/workspace/install/rover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/rover build --build-base /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/build install --record /home/baracuda/Desktop/Rice Robotics/workspace/build/rover/install.log --single-version-externally-managed install_data

@@ -1,0 +1,264 @@
+<robot name="multipleshapes">
+ <link name="base">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.420 0.200 0.120"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.420 0.200 0.120"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="2.0"/>
+     <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+   </inertial>
+ </link>
+  <link name="mid_leg_r">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.118 0.05 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.118 0.05 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="mid_leg_l">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.118 0.05 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.118 0.05 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <joint name="base_to_lleg" type="revolute">
+   <origin xyz="0 -0.12 0" rpy="1.5708 0 0"/>
+   <parent link="base"/>
+   <child link="mid_leg_l"/>
+   <limit lower="-1.57" upper="1.57" effort="10.0" velocity="1.0"/>
+ </joint>
+  <joint name="base_to_rleg" type="revolute">
+   <origin xyz="0 0.12 0" rpy="1.5708 0 0"/>
+   <parent link="base"/>
+   <child link="mid_leg_r"/>
+   <limit lower="-1.57" upper="1.57" effort="10.0" velocity="1.0"/>
+ </joint>
+  <link name="front_wheel_r">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.8"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="front_leg_r">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="back_wheel_r">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.8"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="back_leg_r">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <joint name="mid_to_front_r" type="fixed">
+   <origin xyz="0.12 -0.087 0" rpy="0 0 2.3"/>
+   <parent link="mid_leg_r"/>
+   <child link="front_leg_r"/>
+ </joint>
+  <joint name="mid_to_back_r" type="fixed">
+   <origin xyz="-0.12 -0.087 0" rpy="0 0 -2.3"/>
+   <parent link="mid_leg_r"/>
+   <child link="back_leg_r"/>
+ </joint>
+  <joint name="bkwheel_to_leg_r" type="continuous">
+   <origin xyz="0.12 0 -0.0565" rpy="0 0 0"/>
+   <parent link="back_leg_r"/>
+   <child link="back_wheel_r"/>
+ </joint>
+  <joint name="frwheel_to_leg_r" type="continuous">
+   <origin xyz="-0.12 0 -0.0565" rpy="0 0 0"/>
+   <parent link="front_leg_r"/>
+   <child link="front_wheel_r"/>
+ </joint>
+  <link name="front_wheel_l">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.8"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="front_leg_l">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="back_wheel_l">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <cylinder length="0.067" radius="0.079"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.8"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <link name="back_leg_l">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </visual>
+   <collision>
+     <origin xyz="0 0 0" rpy="0 0 0"/>
+     <geometry>
+       <box size="0.245 0.045 0.041"/>
+     </geometry>
+   </collision>
+   <inertial>
+     <mass value="0.5"/>
+     <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+   </inertial>
+ </link>
+  <joint name="bkwheel_to_leg_l" type="continuous">
+   <origin xyz="0.12 0 0.0565" rpy="0 0 0"/>
+   <parent link="back_leg_l"/>
+   <child link="back_wheel_l"/>
+ </joint>
+  <joint name="frwheel_to_leg_l" type="continuous">
+   <origin xyz="-0.12 0 0.0565" rpy="0 0 0"/>
+   <parent link="front_leg_l"/>
+   <child link="front_wheel_l"/>
+ </joint>
+  <joint name="mid_to_front_l" type="fixed">
+   <origin xyz="0.12 -0.087 0" rpy="0 0 2.3"/>
+   <parent link="mid_leg_l"/>
+   <child link="front_leg_l"/>
+ </joint>
+  <joint name="mid_to_back_l" type="fixed">
+   <origin xyz="-0.12 -0.087 0" rpy="0 0 -2.3"/>
+   <parent link="mid_leg_l"/>
+   <child link="back_leg_l"/>
+ </joint>
+ <gazebo>
+  <plugin
+   filename="libignition-gazebo-diff-drive-system.so"
+   name="ignition::gazebo::systems::DiffDrive">
+   <left_joint>base_to_lleg</left_joint>
+   <right_joint>base_to_rleg</right_joint>
+   <wheel_separation>1.2</wheel_separation>
+   <wheel_radius>0.4</wheel_radius>
+   <odom_publish_frequency>1</odom_publish_frequency>
+   <topic>cmd_vel</topic>
+  </plugin>
+ </gazebo>
+</robot>
