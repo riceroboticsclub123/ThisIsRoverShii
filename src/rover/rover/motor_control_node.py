@@ -71,12 +71,18 @@ class WheelRPMCalculator(Node):
         self.send_rpms_to_arduino(rpm_fl, rpm_fr, rpm_rl, rpm_rr)
 
     def send_rpms_to_arduino(self, rpm_fl, rpm_fr, rpm_rl, rpm_rr):
-        # Format the RPM data into a string and send it to the Arduino
-        message = f"{rpm_fl:.2f},{rpm_fr:.2f},{rpm_rl:.2f},{rpm_rr:.2f}\n"
-        for index, element in enumerate(message.split(',')):
-            command = "M" + str(index) + ":set_velocity_rpm:" + str(element) + "&"
+        # Unit for RPM
+        unit = 1
+        
+        # Prepare RPM values and motor IDs
+        rpms = [rpm_fl, rpm_fr, rpm_rl, rpm_rr]
+        motor_ids = [1, 2, 3, 4]
+        
+        # Format and send RPM commands to Arduino
+        for motor_id, rpm in zip(motor_ids, rpms):
+            command = f"*V{motor_id} {rpm:.2f} {unit}&"
             self.serial_port.write(command.encode())  # Send data to Arduino over serial
-        self.get_logger().info(f"Sent RPM data to Arduino: {message.strip()}")
+            self.get_logger().info(f"Sent command to motor {motor_id}: {command.strip()}")
 
 def main(args=None):
     rclpy.init(args=args)
