@@ -18,7 +18,7 @@ class WheelRPMCalculator(Node):
         self.axle_length = self.get_parameter('axle_length').get_parameter_value().double_value
 
         # Set up serial communication (adjust to your port and baud rate)
-        self.serial_port = serial.Serial('/dev/ttyACM0', 9600)  # Example for Linux, adjust as needed
+        self.serial_port = serial.Serial('/dev/ttyACM0', 9600)
         
         # Subscriber to receive velocity commands (Twist message)
         self.subscription = self.create_subscription(
