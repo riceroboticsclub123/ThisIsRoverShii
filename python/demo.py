@@ -41,22 +41,23 @@ def main():
     demo = SerialControlDemo(port='/dev/ttyACM0', baud_rate=9600)
 
     try:
-        # Example commands
-        print("Sending example commands...")
+        # # Example commands
+        # print("Sending example commands...")
 
-        # Move motor 1 by 500 steps
-        demo.send_command('C', 1, 500)
+        # # Move motor 1 by 500 steps
+        # demo.send_command('C', 1, 500)
 
-        # Set motor 2 max speed to 80% (unitless)
-        demo.send_command('R', 2, 0.8)
+        # # Set motor 2 max speed to 80% (unitless)
+        # demo.send_command('R', 2, 0.8)
 
-        # Move motor 0 to position 1000 steps
-        demo.send_command('P', 0, 1000)
+        # # Move motor 0 to position 1000 steps
+        # demo.send_command('P', 0, 1000)
 
-        # Set motor 3 velocity to 100 RPM (unit = 1 for RPM)
-        demo.send_command('V', 3, 100, 1)
+        # # Set motor 3 velocity to 100 RPM (unit = 1 for RPM)
+        # demo.send_command('V', 3, 100, 1)
         
         # ---------------------------------------------------
+        # Demo code for moving the rover
         
         # Move forward
         print("Move forward!")
@@ -65,6 +66,14 @@ def main():
         demo.send_command('S', 3, 3, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
         demo.send_command('S', 4, 4, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
         demo.send_command('S', 5, 5, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        
+        # Move backward
+        print("Move forward!")
+        demo.send_command('S', -1, -1, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', -2, -2, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', -3, -3, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', -4, -4, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', -5, -5, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
         
         # Try spinning!
         print("Try spinning! (with increasing speed)")
