@@ -57,23 +57,23 @@ def main():
         # demo.send_command('V', 3, 100, 1)
         
         # ---------------------------------------------------
-        # Demo code for moving the rover
+        # Demo code for moving the rover wheels
         
         # Move forward
         print("Move forward!")
-        demo.send_command('S', 1, 1, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', 2, 2, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', 3, 3, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', 4, 4, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', 5, 5, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', 1, 1, 1)  # Set both side motor speed at 1 RPM (unit = 1 for RPM)
+        demo.send_command('S', 2, 2, 1)  # Set both side motor speed at 2 RPM (unit = 1 for RPM)
+        demo.send_command('S', 3, 3, 1)  # Set both side motor speed at 3 RPM (unit = 1 for RPM)
+        demo.send_command('S', 4, 4, 1)  # Set both side motor speed at 4 RPM (unit = 1 for RPM)
+        demo.send_command('S', 5, 5, 1)  # Set both side motor speed at 5 RPM (unit = 1 for RPM)
         
         # Move backward
-        print("Move forward!")
-        demo.send_command('S', -1, -1, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', -2, -2, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', -3, -3, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', -4, -4, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
-        demo.send_command('S', -5, -5, 1)  # Set leftside motor speed at 1 and right side at 1 RPM (unit = 1 for RPM)
+        print("Move backward!")
+        demo.send_command('S', -1, -1, 1)  # Set both side motor speed at -1 RPM (unit = 1 for RPM)
+        demo.send_command('S', -2, -2, 1)  # Set both side motor speed at -2 RPM (unit = 1 for RPM)
+        demo.send_command('S', -3, -3, 1)  # Set both side motor speed at -3 RPM (unit = 1 for RPM)
+        demo.send_command('S', -4, -4, 1)  # Set both side motor speed at -4 RPM (unit = 1 for RPM)
+        demo.send_command('S', -5, -5, 1)  # Set both side motor speed at -5 RPM (unit = 1 for RPM)
         
         # Try spinning!
         print("Try spinning! (with increasing speed)")
@@ -84,10 +84,15 @@ def main():
         demo.send_command('S', 5, -5, 1)  # Set leftside motor speed at 5 and right side at -5 RPM (unit = 1 for RPM)
         
         print("Now with different speeds on left and right sides!")
-        demo.send_command('S', 2, -1, 1)  # Set leftside motor speed at 1 and right side at -1 RPM (unit = 1 for RPM)
-        demo.send_command('S', 3, -2, 1)  # Set leftside motor speed at 2 and right side at -2 RPM (unit = 1 for RPM)
-        demo.send_command('S', 4, -3, 1)  # Set leftside motor speed at 3 and right side at -3 RPM (unit = 1 for RPM)
-        demo.send_command('S', 5, -4, 1)  # Set leftside motor speed at 4 and right side at -4 RPM (unit = 1 for RPM)
+        demo.send_command('S', 2, -1, 1)  # Set leftside motor speed at 2 and right side at -1 RPM (unit = 1 for RPM)
+        demo.send_command('S', 3, -2, 1)  # Set leftside motor speed at 3 and right side at -2 RPM (unit = 1 for RPM)
+        demo.send_command('S', 4, -3, 1)  # Set leftside motor speed at 4 and right side at -3 RPM (unit = 1 for RPM)
+        demo.send_command('S', 5, -4, 1)  # Set leftside motor speed at 5 and right side at -4 RPM (unit = 1 for RPM)
+        
+        # ---------------------------------------------------
+        # Demo code for moving the rover arms
+        
+        
         
         
 
