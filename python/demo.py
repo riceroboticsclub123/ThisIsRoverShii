@@ -34,71 +34,68 @@ class SerialControlDemo:
         """
         self.serial_port.close()
         print("Serial connection closed.")
-
+    
+    def move_wheels(self, start_speed, end_speed, step_size, spin=False, unit=1):
+        """
+        Initiate both side wheels' motor speed to start_speed, increment by
+         step_size during each iteration, stop until end_speed is reached
+        :param start_speed: The start speed (float).
+        :param end_speed: The end speed (float).
+        :param step_size: How much to increment speed during each iteration.
+        :param unit: The unit to which the speed will be set (integer). 1 stands
+        for RPM (rotations per minute), 2 stands for percentage (-100 to 100).
+        """
+        for speed in range(start_speed, end_speed, step_size):
+            if spin:
+                print(f"Set left side motor speed to {speed} RPM, right side to {-speed} RPM.")
+                self.send_command('S', speed, -speed, unit)
+                print("Movement ends, pause 1 second.")
+            else:
+                print(f"Set both sides motor speed to {speed} RPM.")
+                self.send_command('S', speed, speed, unit)
+                print("Movement ends, pause 1 second.")
+            time.sleep(1) # pause 1 second
+    
+    def move_arms(self, start_motor, end_motor, max_speed, move_steps):
+        """
+        Set rover arms motor maximum speed to max_speed, then move each joint's
+        arm by move_steps.
+        :param start_motor: The ID of the joint that moves first (integer).
+        :param end_motor: The ID of the joint that moves last (integer).
+        :param max_speed: The maximum speed we set to the rover arms motor (float).
+        :param move_steps: The number of steps you want to move (integer).
+        """
+        for motor in range(start_motor, end_motor+1):
+            print(f"Set rover arm joint #{motor} max speed to {max_speed*100}%.")
+            self.send_command('R', motor, max_speed)
+            print(f"Move rover arm joint #{motor} by {move_steps} steps.")
+            self.send_command('C', motor, move_steps)
+            print("Movement ends, pause 1 second.")
+            time.sleep(1) # pause 1 second
 
 def main():
     # Initialize the serial control demo
     demo = SerialControlDemo(port='/dev/ttyACM0', baud_rate=9600)
 
     try:
-        # Demo code for moving the rover wheels
         print("Demo code for moving the rover wheels, starting now:")
-        
         # Move forward
         print("Move forward!")
-        print("Set both side motor speed at 1 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 1, 1, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at 2 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 2, 2, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at 3 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 3, 3, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at 4 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 4, 4, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at 5 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 5, 5, 1)
-        time.sleep(1)  # Pause for 1 second
-        
+        demo.move_wheels(1, 6, 1)
         # Move backward
         print("Move backward!")
-        print("Set both side motor speed at -1 RPM (unit = 1 for RPM)")
-        demo.send_command('S', -1, -1, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at -2 RPM (unit = 1 for RPM)")
-        demo.send_command('S', -2, -2, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at -3 RPM (unit = 1 for RPM)")
-        demo.send_command('S', -3, -3, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at -4 RPM (unit = 1 for RPM)")
-        demo.send_command('S', -4, -4, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set both side motor speed at -5 RPM (unit = 1 for RPM)")
-        demo.send_command('S', -5, -5, 1)
-        time.sleep(1)  # Pause for 1 second
+        demo.move_wheels(-1, -6, -1)
+        # Spinning
+        print("Try spinning!")
+        demo.move_wheels(1, 6, 1, True)
         
-        # Try spinning!
-        print("Try spinning! (with increasing speed)")
-        print("Set leftside motor speed at 1 and right side at -1 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 1, -1, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set leftside motor speed at 2 and right side at -2 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 2, -2, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set leftside motor speed at 3 and right side at -3 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 3, -3, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set leftside motor speed at 4 and right side at -4 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 4, -4, 1)
-        time.sleep(1)  # Pause for 1 second
-        print("Set leftside motor speed at 5 and right side at -5 RPM (unit = 1 for RPM)")
-        demo.send_command('S', 5, -5, 1)
-        time.sleep(1)  # Pause for 1 second
+        print("Demo code for moving the rover arms, starting now:")
+        # Move arms
+        demo.move_arms(0, 3, 0.8, 500)
         
-        # ...continue adding time.sleep() between other commands as needed...
+        print("Demo code for drilling, starting now:")
+        # Drill
+        demo.send_command('L', 255.0)
 
     except Exception as e:
         print(f"An error occurred: {e}")
