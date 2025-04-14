@@ -45,7 +45,7 @@ class SerialControlDemo:
         :param unit: The unit to which the speed will be set (integer). 1 stands
         for RPM (rotations per minute), 2 stands for percentage (-100 to 100).
         """
-        for speed in range(start_speed, end_speed, step_size):
+        for speed in range(start_speed, end_speed+1, step_size):
             if spin:
                 print(f"Set left side motor speed to {speed} RPM, right side to {-speed} RPM.")
                 self.send_command('S', speed, -speed, unit)
